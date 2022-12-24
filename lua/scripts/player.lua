@@ -55,6 +55,10 @@ local function onUpdate()
     -- so for now, just check if health decreased
     local newHealth = getCurrentHealth()
     -- get change in health
+    -- sometimes getCurrentHealth doesn't trigger in onLoad, so we would get nil
+    if currentHealth == nil then
+        currentHealth = getCurrentHealth()
+    end
     local deltaHealth = newHealth - currentHealth
     -- update current health
     currentHealth = newHealth
@@ -71,6 +75,9 @@ local function onUpdate()
     -- don't know if there's a way to detect which school of magic was used
     local newMagicka = getCurrentMagicka()
     -- get change in magicka
+    if currentMagicka == nil then
+        currentMagicka = getCurrentMagicka()
+    end
     local deltaMagicka = newMagicka - currentMagicka
     -- update current magicka
     currentMagicka = newMagicka

@@ -81,9 +81,8 @@ async def main(config, process):
             if process.poll() is not None:
                 if config['debug']:
                     print('Game quit')
-                await asyncio.sleep(0)
                 break
-            elif output:
+            elif 'bHap' in output:
                 # Begin the disgusting amount of if/elif statements
                 # to check for the different types of events
                 # damage to or spell cast by the player
@@ -220,8 +219,6 @@ async def main(config, process):
                     await websocket.send(submit_payload("FallEffect_1",
                         scale_option={"intensity": 0.5,
                                     "duration": 0.5})) 
-                else:
-                    continue
                 await asyncio.sleep(0)
 
 def create_session(config, process):
