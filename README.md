@@ -32,8 +32,8 @@ This is a hack to get bHaptics working with OpenMW v0.48 with a Python wrapper.
     - Change `tact_directory` to point to the directory where you have the .tact files if you are not using the default directory
     - Change `tact_files` under `health` and `magicka` if you've got a different set of .tact files you want to use
 dependent on how much health you lost or magicka used for a spell (percentage of base values)
-2. Run the Python Wrapper instead of `openmw.exe`. You can still use the launcher to change settings; just don't actually launch it from there.
-    - Use the provided Windows 64-bit binary executable file (`wrapper.exe`) or
+2. Run the Python Wrapper instead of `openmw.exe`. You can still use the launcher to change settings; just don't actually launch it from there. It needs to be in the same directory as `config.json`.
+    - Use the provided Windows 64-bit binary executable file (https://github.com/SiftingSands/openMW_bhaptics/releases/tag/v0.1 -> download `wrapper.exe`) or
     - Run this in your own Python environment or
       - Install https://websockets.readthedocs.io/en/stable/index.html (aka `pip install websockets`)
     - Build your own binary executable file
