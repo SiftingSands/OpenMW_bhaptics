@@ -1,0 +1,51 @@
+{
+    "openMW_exe_path": "C:\\Program Files\\OpenMW 0.48.0\\openmw.exe",
+    "tact_directory": "tact_files",
+    "bHaptics_URI": "ws://localhost:15881/v2/feedbacks",
+    "health": {
+        "intensity": 1.0,
+        "duration": 1.0,
+        "dynamic_scaling": true,
+        "tact_files": [
+            "Bite_1.tact",
+            "Melee2HAxeLeft_1.tact",
+            "Melee2HAxeRight_1.tact",
+            "Melee2HSwordLeft_1.tact",
+            "Melee2HSwordRight_1.tact",
+            "MeleeAxeLeft_1.tact",
+            "MeleeAxeRight_1.tact",
+            "MeleeBash_1.tact",
+            "MeleeDaggerLeft_1.tact",
+            "MeleeDaggerRight_1.tact",
+            "MeleeFist_1.tact",
+            "MeleeFist_2.tact",
+            "MeleeMaceLeft_1.tact",
+            "MeleeMaceRight_1.tact",
+            "MeleePowerAttack_1.tact",
+            "MeleePowerAttack_2.tact",
+            "MeleePowerAttack_3.tact",
+            "MeleeSwordLeft_1.tact",
+            "MeleeSwordRight_1.tact"
+        ]
+    },
+    "magicka": {
+        "intensity": 1.0,
+        "duration": 1.0,
+        "dynamic_scaling": true,
+        "tact_files": [
+            "MagicAlteration_1.tact",
+            "MagicFire_1.tact",
+            "MagicFire_2.tact",
+            "MagicFire_3.tact",
+            "MagicIce_1.tact",
+            "MagicIce_2.tact",
+            "MagicIce_3.tact",
+            "MagicIllusion_1.tact",
+            "MagicOther_1.tact",
+            "MagicRestoration_1.tact",
+            "MagicShock_1.tact",
+            "MagicShock_2.tact"
+        ]
+    },
+    "debug": false
+    }
