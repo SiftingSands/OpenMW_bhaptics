@@ -17,16 +17,6 @@ local Ammunition =  Player.EQUIPMENT_SLOT.Ammunition
 local Potion = types.Potion
 local Ingredient = types.Ingredient
 
-local function getCurrentHealth()
-    local health = dynamicStats['health'](self)
-    return health.current
-end
-
-local function getCurrentMagicka()
-    local magicka = dynamicStats['magicka'](self)
-    return magicka.current
-end
-
 I.Settings.registerPage {
     key = 'bHaptics',
     l10n = 'bHaptics',
@@ -34,17 +24,47 @@ I.Settings.registerPage {
     description = "Confirmation that the Lua script loaded. See config.json for settings."
 }
 
-local function onLoad()
-    currentHealth = getCurrentHealth()
-    currentMagicka = getCurrentMagicka()
-    currentHelment = Player.equipment(self, Helmet)
-    currentCuirass = Player.equipment(self, Cuirass)
-    currentShirt = Player.equipment(self, Shirt)
-    currentRobe = Player.equipment(self, Robe)
-    currentLeftGauntlet = Player.equipment(self, LeftGauntlet)
-    currentRightGauntlet = Player.equipment(self, RightGauntlet)
-    currentAmmunition = Player.equipment(self, Ammunition)
+local function onInit()
+    -- get current player state
+    currentHealth = dynamicStats['health'](self).current
+    currentMagicka = dynamicStats['magicka'](self).current
+    currentHelmet = Player.equipment(self)[Helmet]
+    currentCuirass = Player.equipment(self)[Cuirass]
+    currentShirt = Player.equipment(self)[Shirt]
+    currentRobe = Player.equipment(self)[Robe]
+    currentLeftGauntlet = Player.equipment(self)[LeftGauntlet]
+    currentRightGauntlet = Player.equipment(self)[RightGauntlet]
+    currentAmmunition = Player.equipment(self)[Ammunition]
     currentPlayerGround = Player.isOnGround(self)
+end
+
+local function onLoad(data)
+    currentHealth = data.currentHealth
+    currentMagicka = data.currentMagicka
+    currentHelment = data.currentHelment
+    currentCuirass = data.currentCuirass
+    currentShirt = data.currentShirt
+    currentRobe = data.currentRobe
+    currentLeftGauntlet = data.currentLeftGauntlet
+    currentRightGauntlet = data.currentRightGauntlet
+    currentAmmunition = data.currentAmmunition
+    currentPlayerGround = data.currentPlayerGround
+end
+
+local function onSave()
+    -- save player state so we can compare to new values once the script is loaded
+    data = {}
+    data["currentHealth"] = currentHealth
+    data["currentMagicka"] = currentMagicka
+    data["currentHelmet"] = currentHelmet
+    data["currentCuirass"] = currentCuirass
+    data["currentShirt"] = currentShirt
+    data["currentRobe"] = currentRobe
+    data["currentLeftGauntlet"] = currentLeftGauntlet
+    data["currentRightGauntlet"] = currentRightGauntlet
+    data["currentAmmunition"] = currentAmmunition
+    data["currentPlayerGround"] = currentPlayerGround
+    return data
 end
 
 local function onUpdate()
@@ -53,12 +73,9 @@ local function onUpdate()
     -- you can find which actors nearby have what weapon types but do you know
     -- which weapon type was used to land the hit?
     -- so for now, just check if health decreased
-    local newHealth = getCurrentHealth()
+    local health = dynamicStats['health'](self)
+    local newHealth = health.current
     -- get change in health
-    -- sometimes getCurrentHealth doesn't trigger in onLoad, so we would get nil
-    if currentHealth == nil then
-        currentHealth = getCurrentHealth()
-    end
     local deltaHealth = newHealth - currentHealth
     -- update current health
     currentHealth = newHealth
@@ -73,11 +90,9 @@ local function onUpdate()
     end
 
     -- don't know if there's a way to detect which school of magic was used
-    local newMagicka = getCurrentMagicka()
+    local magicka = dynamicStats['magicka'](self)
+    local newMagicka = magicka.current
     -- get change in magicka
-    if currentMagicka == nil then
-        currentMagicka = getCurrentMagicka()
-    end
     local deltaMagicka = newMagicka - currentMagicka
     -- update current magicka
     currentMagicka = newMagicka
@@ -206,7 +221,9 @@ end
 
 return {
     engineHandlers = {
+        onInit = onInit,
         onLoad = onLoad,
+        onSave = onSave,
         onUpdate = onUpdate,
         onConsume = onConsume
     }
