@@ -16,11 +16,11 @@ This is a hack to get bHaptics working with OpenMW v0.48 with a Python wrapper.
 2. Install bHaptics (https://www.bhaptics.com/support/downloads), **which unforunately is Windows only for desktop computer users**
 3. Sync your bHaptics device(s) with the bHaptics app. I only have the vest, so I can't test the other devices.
 4. Place this repo somewhere, for example `C:\Users\<USERNAME>\Documents\openMW_bhaptics`
-4. Add the following lines to `openmw.cfg`, likely the one in `C:\Users\<USERNAME>\Documents\My Games\OpenMW`
+5. Add the following lines to `openmw.cfg`, likely the one in `C:\Users\<USERNAME>\Documents\My Games\OpenMW`
 
-    `data="C:\Users\<USERNAME>\Documents\openMW_bhaptics\lua"`
+    `data="C:\Users\<USERNAME>\Documents\openMW_bhaptics\lua"` <- Match the path to where you placed this repo (step 4)
   
-    `content=content=bHaptics.omwscripts`
+    `content=bHaptics.omwscripts`
 
 # Usage
 
@@ -28,11 +28,10 @@ This is a hack to get bHaptics working with OpenMW v0.48 with a Python wrapper.
     - Point `openMW_exe_path` to the full filepath of the OpenMW executable binary (VR or otherwise)
     - Change `bHaptics_URI` if you have a non-standard URI for the bHaptics server
     - Change `intensity` and `duration` under `health` and `magicka` to taste, 1.0 is the default
-    - Set `dynamic_scaling` under `health` and `magicka` to `true` to enable haptic feedback intensity to be adjusted 
+    - Set `dynamic_scaling` under `health` and `magicka` to `true` to enable haptic feedback intensity to be adjusted dependent on how much health you lost or magicka used for a spell (percentage of base values)
     - Change `tact_directory` to point to the directory where you have the .tact files if you are not using the default directory
     - Change `tact_files` under `health` and `magicka` if you've got a different set of .tact files you want to use
-dependent on how much health you lost or magicka used for a spell (percentage of base values)
-2. Run the Python Wrapper instead of `openmw.exe`. You can still use the launcher to change settings; just don't actually launch it from there. It needs to be in the same directory as `config.json`.
+2. Run the Python Wrapper instead of `openmw.exe`. You can still use the launcher to change settings; just don't actually launch it from there. **It needs to be in the same directory as `config.json`.**
     - Use the provided Windows 64-bit binary executable file or
       - https://github.com/SiftingSands/openMW_bhaptics/releases/tag/v0.2 -> download `wrapper.exe`
     - Run this in your own Python environment or
