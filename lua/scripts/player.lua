@@ -35,6 +35,8 @@ local function onInit()
     currentLeftGauntlet = Player.equipment(self)[LeftGauntlet]
     currentRightGauntlet = Player.equipment(self)[RightGauntlet]
     currentAmmunition = Player.equipment(self)[Ammunition]
+    -- starting a new game actually sets the player off the ground?
+    -- not a huge deal, just a haptic trigger on a new game
     currentPlayerGround = Player.isOnGround(self)
 end
 

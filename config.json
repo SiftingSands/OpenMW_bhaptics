@@ -1,5 +1,5 @@
 {
-    "openMW_exe_path": "C:\\Program Files\\OpenMW 0.48.0\\openmw.exe",
+    "OpenMW_exe_path": "C:\\Program Files\\OpenMW 0.48.0\\openmw.exe",
     "tact_directory": "tact_files",
     "bHaptics_URI": "ws://localhost:15881/v2/feedbacks",
     "health": {
