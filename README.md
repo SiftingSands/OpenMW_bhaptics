@@ -36,7 +36,7 @@ dependent on how much health you lost or magicka used for a spell (percentage of
     - Use the provided Windows 64-bit binary executable file or
       - https://github.com/SiftingSands/openMW_bhaptics/releases/tag/v0.1 -> download `wrapper.exe`
     - Run this in your own Python environment or
-      - Install https://websockets.readthedocs.io/en/stable/index.html (aka `pip install websockets`)
+      - Install https://websockets.readthedocs.io/en/stable/index.html (aka `pip install websocket-client`)
     - Build your own binary executable file
       - I used `python -m PyInstaller wrapper.py --onefile`
 
@@ -47,10 +47,9 @@ dependent on how much health you lost or magicka used for a spell (percentage of
 3. Heartbeat on low health not implemented (yet?)
 4. No haptic feedback on player weapon attacks (melee nor ranged), blocks, swimming, teleporting, weather, or opening containers
 5. I can't seem to detect health and magicka fortification in OpenMW's Lua scripting, so `dynamic_scaling` always works off the base values. `dynamic_scaling` also only affects intensity and not duration of haptics.
-6. No MCM menu to configure settings, because I would have to read those into the Python wrapper. Definitely doable, just not ideal because there would be two places to configure settings.
-7. Python wrapper may take ~10 seconds to close after exiting OpenMW. I think this is because the WebSocket connection is still open and the Python wrapper is waiting for a response from the bHaptics server. Not sure how to fix this.
-8. I don't notice any latency between the haptic feedback and the event that triggered it with this Python wrapper. Your results may vary on less powerful hardware (but PC VR typically means you've got some beefy hardware).
-9. I had never written a single line of Lua or even looked at OpenMW's codebase 48 hours ago, so expect bugs.
+6. No MCM to customize settings, because I would have to read those into the Python wrapper. Definitely doable, just not ideal because there would be two places to configure settings.
+7. I don't notice any latency between the haptic feedback and the event that triggered it with this Python wrapper. Your results may vary on less powerful hardware (but PC VR typically means you've got some beefy hardware).
+8. I had never written a single line of Lua or even looked at OpenMW's codebase 48 hours ago, so expect bugs.
 
 # License
 
